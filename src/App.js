@@ -1,17 +1,22 @@
+// App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import LoginForm from './components/auth/LoginForm';
-import RegisterForm from './components/auth/RegisterForm';
-import Dashboard from './components/Dashboard'; // Import the Dashboard component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DeckProvider } from './context/DeckContext';
+import Search from './components/Search';
+import Deck from './components/Deck';
+import './index.css'; // Import your index.css file
+
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route exact path="/" component={LoginForm} />
-        <Route path="/dashboard" component={Dashboard} /> {/* Define route for dashboard */}
-      </Routes>
-    </div>
+    <DeckProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Search />} />
+          <Route path="/deck" element={<Deck />} />
+        </Routes>
+      </Router>
+    </DeckProvider>
   );
 };
 
